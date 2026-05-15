@@ -98,7 +98,7 @@
             font-family: var(--main-font);
         }
         .drop-zone:empty::before {
-            content: '請點選下方詞語卡片，排列成通順的文句';
+            content: '請點選上方詞語卡片，排列成通順的文句';
             color: #94a3b8;
             font-size: 1.1rem;
             width: 100%;
@@ -270,13 +270,13 @@
             },
             {
                 id: 'q2',
-                label: '第二段①',
+                label: '第二段 ①',
                 answer: '夏蚊成雷，私擬作群鶴舞空，心之所向，則或千或百，果然鶴也；昂首觀之，項為之強。',
                 chunks: ['夏蚊成雷，', '私擬作群鶴舞空，', '心之所向，', '則或千或百，', '果然鶴也；', '昂首觀之，', '項為之強。']
             },
             {
                 id: 'q3',
-                label: '第二段②',
+                label: '第二段 ②',
                 answer: '又留蚊於素帳中，徐噴以煙，使之沖煙飛鳴，作青雲白鶴觀；果如鶴唳雲端，為之怡然稱快。',
                 chunks: ['又留蚊於素帳中，', '徐噴以煙，', '使之沖煙飛鳴，', '作青雲白鶴觀；', '果如鶴唳雲端，', '為之怡然稱快。']
             },
@@ -288,13 +288,13 @@
             },
             {
                 id: 'q5',
-                label: '第四段①',
+                label: '第四段 ①',
                 answer: '一日，見二蟲鬥草間，觀之，興正濃，忽有龐然大物，拔山倒樹而來，蓋一癩蝦蟆也。',
                 chunks: ['一日，', '見二蟲鬥草間，', '觀之，', '興正濃，', '忽有龐然大物，', '拔山倒樹而來，', '蓋一癩蝦蟆也。']
             },
             {
                 id: 'q6',
-                label: '第四段②',
+                label: '第四段 ②',
                 answer: '舌一吐而二蟲盡為所吞。余年幼，方出神，不覺呀然驚恐。神定，捉蝦蟆，鞭數十，驅之別院。',
                 chunks: ['舌一吐而二蟲盡為所吞。', '余年幼，', '方出神，', '不覺呀然驚恐。', '神定，', '捉蝦蟆，', '鞭數十，', '驅之別院。']
             }
@@ -372,7 +372,6 @@
 
                 const shuffledWords = [...ex.chunks].sort(() => Math.random() - 0.5);
 
-                // 將 gap-3 修改為 gap-4 增加編號與標題間的距離
                 card.innerHTML = `
                     <div class="mb-4 flex items-center gap-4">
                         <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-bold text-lg border-2 border-emerald-200">${ex.id.replace('q', '')}</span>
