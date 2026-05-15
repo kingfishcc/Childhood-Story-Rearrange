@@ -19,14 +19,12 @@
             --success-color: #10b981; /* Emerald 500 */
             --error-color: #ef4444; /* Red 500 */
             
-            /* 👇 關鍵修改在這裡：字體順序設定 👇 */
             /* 瀏覽器會從左讀到右：源泉圓體優先 -> Chiron GoRound TC 備用 -> 最後用微軟正黑體或系統預設 */
             --main-font: 'GenSenRounded TW', 'Chiron GoRound TC', 'Microsoft JhengHei', sans-serif;
         }
 
         body {
             font-family: var(--main-font);
-            /* 👇 加上你提到的 Google Fonts 視覺微調屬性 👇 */
             font-optical-sizing: auto;
             
             background-color: #f0fdf4;
@@ -248,12 +246,11 @@
         <div id="container-exercises" class="space-y-8"></div>
 
         <!-- Footer / Citation -->
-        <!-- 移除 font-sans 以繼承 body 的字體，並設定整體文字大小較小 -->
         <footer class="mt-16 mb-8 text-center">
             <div class="max-w-xl mx-auto px-4 space-y-1">
-                <p class="text-gray-600 font-medium text-sm">原版工具：米克師；延伸開發：金魚老師</p>
+                <p class="text-gray-600 font-medium text-sm">原版工具：特教米克師；延伸開發：金魚老師</p>
                 <p class="text-gray-600 font-medium text-sm">
-                    工具連結：<a href="https://spedmix.pages.dev/unscramble" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 hover:underline transition-colors">https://reurl.cc/KO98Q9</a>
+                    工具連結：<a href="https://reurl.cc/KO98Q9" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 hover:underline transition-colors">https://reurl.cc/KO98Q9</a>
                 </p>
                 
                 <p class="text-xs text-gray-400 pt-2">本作品基於原版工具改編，採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" target="_blank" rel="noopener noreferrer" class="hover:text-gray-500 underline decoration-dotted">CC BY-NC-SA 4.0</a> 授權。</p>
@@ -346,7 +343,6 @@
             speechText = speechText.replace(/拔山倒樹/g, '拔山島樹');
             
             // 癩蝦蟆 (蝦 -> 蛤, ㄏㄚˊ)
-            // 註：使用「蛤」通常能觸發語音引擎讀 ㄏㄚˊ，若部分引擎讀 ㄍㄜˊ 則需視情況調整
             speechText = speechText.replace(/癩蝦蟆/g, '癩蛤蟆');
 
             // 第四段②
@@ -376,8 +372,9 @@
 
                 const shuffledWords = [...ex.chunks].sort(() => Math.random() - 0.5);
 
+                // 將 gap-3 修改為 gap-4 增加編號與標題間的距離
                 card.innerHTML = `
-                    <div class="mb-4 flex items-center gap-3">
+                    <div class="mb-4 flex items-center gap-4">
                         <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-bold text-lg border-2 border-emerald-200">${ex.id.replace('q', '')}</span>
                         <h2 class="text-xl font-bold text-gray-700 tracking-wide">${ex.label}</h2>
                     </div>
@@ -431,14 +428,13 @@
                 const feedbackEl = card.querySelector('.feedback');
                 feedbackEl.textContent = '';
                 zone.classList.remove('correct', 'incorrect');
-
-                // 👇 修復 Bug 的地方 👇
-                // 如果這題原本已經答對，但現在被移動了任何一塊，就要取消它的完成狀態並扣除進度
+                
+                // 修復 Bug：若原本已答對，但被移動了詞塊，則取消完成狀態並扣除進度
                 if (zone.dataset.completed) {
                     delete zone.dataset.completed;
                     updateProgress(-1);
                 }
-
+                
                 return;
             }
 
